@@ -27,11 +27,9 @@ jobs:
           make html
 
       - name: Deploy to GitHub Pages
-<<<<<<< HEAD
-        uses: peaceiris/actions-gh-pages@v4
-=======
         uses: peaceiris/actions-gh-pages@v3
->>>>>>> caaf93e (Fix publish_dir to correct build/html path)
+
+
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/html
+          publish_dir: ./source/build/html
