@@ -1,0 +1,649 @@
+<!doctype html>
+<html class="no-js" lang="en" data-content_root="./">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Virtual Machines" href="vms.html" /><link rel="prev" title="Welcome to Katie’s documentation!" href="index.html" />
+
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.07.19 -->
+        <title>HPC Introduction - Guides 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d111a655" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?v=25af2a20" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?v=8dab3a3b" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f2f2f2;
+  --color-code-foreground: #1e1e1e;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #2b2b2b;
+  --color-code-foreground: #f8f8f2;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-with-moon" viewBox="0 0 24 24">
+    <title>Auto light/dark, in light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path style="opacity: 50%" d="M 5.411 14.504 C 5.471 14.504 5.532 14.504 5.591 14.504 C 3.639 16.319 4.383 19.569 6.931 20.352 C 7.693 20.586 8.512 20.551 9.25 20.252 C 8.023 23.207 4.056 23.725 2.11 21.184 C 0.166 18.642 1.702 14.949 4.874 14.536 C 5.051 14.512 5.231 14.5 5.411 14.5 L 5.411 14.504 Z"/>
+      <line x1="14.5" y1="3.25" x2="14.5" y2="1.25"/>
+      <line x1="14.5" y1="15.85" x2="14.5" y2="17.85"/>
+      <line x1="10.044" y1="5.094" x2="8.63" y2="3.68"/>
+      <line x1="19" y1="14.05" x2="20.414" y2="15.464"/>
+      <line x1="8.2" y1="9.55" x2="6.2" y2="9.55"/>
+      <line x1="20.8" y1="9.55" x2="22.8" y2="9.55"/>
+      <line x1="10.044" y1="14.006" x2="8.63" y2="15.42"/>
+      <line x1="19" y1="5.05" x2="20.414" y2="3.636"/>
+      <circle cx="14.5" cy="9.55" r="3.6"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon-with-sun" viewBox="0 0 24 24">
+    <title>Auto light/dark, in dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+      class="icon-custom-derived-from-feather-sun-and-tabler-moon">
+      <path d="M 8.282 7.007 C 8.385 7.007 8.494 7.007 8.595 7.007 C 5.18 10.184 6.481 15.869 10.942 17.24 C 12.275 17.648 13.706 17.589 15 17.066 C 12.851 22.236 5.91 23.143 2.505 18.696 C -0.897 14.249 1.791 7.786 7.342 7.063 C 7.652 7.021 7.965 7 8.282 7 L 8.282 7.007 Z"/>
+      <line style="opacity: 50%" x1="18" y1="3.705" x2="18" y2="2.5"/>
+      <line style="opacity: 50%" x1="18" y1="11.295" x2="18" y2="12.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="4.816" x2="14.464" y2="3.964"/>
+      <line style="opacity: 50%" x1="20.711" y1="10.212" x2="21.563" y2="11.063"/>
+      <line style="opacity: 50%" x1="14.205" y1="7.5" x2="13.001" y2="7.5"/>
+      <line style="opacity: 50%" x1="21.795" y1="7.5" x2="23" y2="7.5"/>
+      <line style="opacity: 50%" x1="15.316" y1="10.184" x2="14.464" y2="11.036"/>
+      <line style="opacity: 50%" x1="20.711" y1="4.789" x2="21.563" y2="3.937"/>
+      <circle style="opacity: 50%" cx="18" cy="7.5" r="2.169"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-pencil" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-pencil-code">
+      <path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4" />
+      <path d="M13.5 6.5l4 4" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+  <symbol id="svg-eye" viewBox="0 0 24 24">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-eye-code">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M10 12a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
+      <path
+        d="M11.11 17.958c-3.209 -.307 -5.91 -2.293 -8.11 -5.958c2.4 -4 5.4 -6 9 -6c3.6 0 6.6 2 9 6c-.21 .352 -.427 .688 -.647 1.008" />
+      <path d="M20 21l2 -2l-2 -2" />
+      <path d="M17 17l-2 2l2 2" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+<a class="skip-to-content muted-link" href="#furo-main-content">Skip to content</a>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="index.html"><div class="brand">Guides 0.0.1 documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+          <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+  
+  <span class="sidebar-brand-text">Guides 0.0.1 documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">HPC:</span></p>
+<ul class="current">
+<li class="toctree-l1 current current-page"><a class="current reference internal" href="#">HPC Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#hpc-how-to-quick-start-guide">HPC How-To Quick Start Guide</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">VMs:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="vms.html">Virtual Machines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Windows:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="wsl.html">Windows Subsystem for Linux</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wsl.html#windows-sandboxing">Windows Sandboxing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Storage:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="datastorage.html">Data Storage Options</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          <div class="view-this-page">
+  <a class="muted-link" href="_sources/hpc_intro.rst.txt" title="View this page">
+    <svg><use href="#svg-eye"></use></svg>
+    <span class="visually-hidden">View this page</span>
+  </a>
+</div>
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto-light"><use href="#svg-sun-with-moon"></use></svg>
+              <svg class="theme-icon-when-auto-dark"><use href="#svg-moon-with-sun"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main" id="furo-main-content">
+          <section id="hpc-introduction">
+<h1>HPC Introduction<a class="headerlink" href="#hpc-introduction" title="Link to this heading">¶</a></h1>
+<p>Welcome to the HPC introduction page.
+Here you will find details about high-performance computing and the University of Maine.</p>
+<section id="arcsim">
+<h2>ARCSIM<a class="headerlink" href="#arcsim" title="Link to this heading">¶</a></h2>
+<p>The University of Maine unit, ARCSIM – Advanced Research Computing, Security, and Information, is a specialized unit for researchers of UMS and ASCC for technical support and consultation.</p>
+<p>ARCSIM has HPC (High Performance Computing) options available for UMS researchers. Their on-premise HPC cluster, Penobscot, has CPU and GPU partitions.</p>
+<p>Open OnDemand, an interactive portal, is available to use through web browser to access the Penobscot cluster and GUI apps.</p>
+<p>The Penobscot cluster supports the use of AI and ML research needs.</p>
+<p>CUI and federally regulated data please use compliant local solutions or GCCH Azure resources. For more information and resources for CUI and sensitive data please contact ARCSIM.</p>
+<p>Tel: 207.581.3399
+<a class="reference external" href="mailto:um&#46;arcsim&#37;&#52;&#48;maine&#46;edu">um<span>&#46;</span>arcsim<span>&#64;</span>maine<span>&#46;</span>edu</a></p>
+</section>
+<section id="cpu-vs-gpu-options">
+<h2>CPU vs. GPU options<a class="headerlink" href="#cpu-vs-gpu-options" title="Link to this heading">¶</a></h2>
+<p>CPU (central processing unit) compute nodes used are for a wide range of general tasks such as operating system functions, application management, and general data processing.</p>
+<ul class="simple">
+<li><p>CPUs use multiple cores to work on different complicated tasks.</p></li>
+<li><p>CPUs are good for serial processing and have low latency.</p></li>
+</ul>
+<p>GPU (graphical processing unit) compute nodes are used for fast, complex problem solving. They specialize in parallel processing, more specifically in graphics, AI, and ML.</p>
+<ul class="simple">
+<li><p>GPUs use many cores with high throughput to process information.</p></li>
+</ul>
+</section>
+<section id="arcsim-hpc-clusters">
+<h2>ARCSIM HPC Clusters<a class="headerlink" href="#arcsim-hpc-clusters" title="Link to this heading">¶</a></h2>
+<p>ARCSIM has two clusters available to use for UMS researchers:</p>
+<ul>
+<li><p>Katahdin Legacy Cluster</p>
+<blockquote>
+<div><p>For use of older packages and modules</p>
+</div></blockquote>
+</li>
+<li><p>Penobscot Cluster</p>
+<blockquote>
+<div><p>Utilizes most recent GPU hardware</p>
+<p>Supports AI and ML</p>
+<p>Terminal based SSH connections or OOD interface</p>
+</div></blockquote>
+</li>
+</ul>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">118 CPU compute servers with a total of 4512 CPU cores</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">Up to 96 CPU cores and 1TB RAM per machine</p></li>
+</ul>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">6 GPU compute servers with 29 GPUs, including 14 A100’s</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">8x Nvidia A100 (40GB; SXM4, DGX system)</p></li>
+<li><p class="sd-card-text">6x Nvidia A100 (80GB; 4x SXM4, 2x PCIe)</p></li>
+<li><p class="sd-card-text">15x Nvidia L40 (48GB), A30 (24GB), RTX 2080Ti (11GB)</p></li>
+</ul>
+</div>
+</details></section>
+<section id="pricing">
+<h2>Pricing<a class="headerlink" href="#pricing" title="Link to this heading">¶</a></h2>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<span class="sd-summary-text">All services offered at federally compliant rates. Pre-payments are not allowed under any circumstances.</span><span class="sd-summary-state-marker sd-summary-chevron-right"><svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-right" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.72 18.78a.75.75 0 0 1 0-1.06L14.44 12 8.72 6.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018l6.25 6.25a.75.75 0 0 1 0 1.06l-6.25 6.25a.75.75 0 0 1-1.06 0Z"></path></svg></span></summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Definitions used for calculating rates:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p class="sd-card-text">1 month = 730 hours and 1 TB = 1000 GB</p></li>
+</ul>
+</div></blockquote>
+<ol class="upperalpha simple" start="18">
+<li><p class="sd-card-text">Flagg or C. Dalton: Project Coordination, Development, Training</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Rate for advanced technical support, consulting services or custom development</dt><dd><ul>
+<li><p class="sd-card-text">Hour  $40.00</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</li>
+</ol>
+</div>
+</details></section>
+<section id="cpu-compute-nodes">
+<h2>CPU Compute Nodes<a class="headerlink" href="#cpu-compute-nodes" title="Link to this heading">¶</a></h2>
+<p>Haswell</p>
+<ul class="simple">
+<li><p>General HPC use. Up to 24 cores available.</p></li>
+</ul>
+<p>Skylake</p>
+<ul class="simple">
+<li><p>General HPC use. Up to 36 cores, 240GB available.</p></li>
+</ul>
+<p>EPYC</p>
+<ul class="simple">
+<li><p>AMD EPYC 3 Milan machines for larger HPC jobs. Up to 96 cores available.</p></li>
+</ul>
+<p>EPYC-HM</p>
+<ul class="simple">
+<li><p>AMD EPYC 3 Milan high memory machines. Up to 32 cores available.</p></li>
+</ul>
+<p>EPYC-GENOA</p>
+<ul class="simple">
+<li><p>AMD EPYC 4 Genoa machines for larger HPC jobs. Up to 96 cores available.</p></li>
+</ul>
+</section>
+<section id="gpu-compute-nodes-penobscot-only">
+<h2>GPU Compute Nodes       Penobscot Only<a class="headerlink" href="#gpu-compute-nodes-penobscot-only" title="Link to this heading">¶</a></h2>
+<ul>
+<li><p>node-g105: NVIDIA DGX A100</p>
+<blockquote>
+<div><p>128 cores/256 threads using AMD EPYC™ 2 Rome CPUs</p>
+<p>40 GB RAM each</p>
+<p>total of 1 TB of RAM</p>
+</div></blockquote>
+</li>
+<li><p>node-g104: NVIDIA RTX 2080 Ti</p>
+<blockquote>
+<div><p>Single 32-core AMD EPYC™ 1 Naples CPU</p>
+<p>Total of 768 GB of RAM</p>
+</div></blockquote>
+</li>
+<li><p>node-g101: NVIDIA A100</p>
+<blockquote>
+<div><p>32-core AMD EPYC™ Milan CPUs at 3.0 Ghz</p>
+<p>80 GB RAM each</p>
+<p>Total of 512 GB of RAM</p>
+</div></blockquote>
+</li>
+<li><p>node-g102: NVIDIA L40</p>
+<blockquote>
+<div><p>32-core AMD EPYC™ Milan CPUs at 3.0 Ghz</p>
+<p>48 GB RAM each</p>
+<p>Total of 512 GB of RAM</p>
+</div></blockquote>
+</li>
+<li><p>node-g103: NVIDIA A30</p>
+<blockquote>
+<div><p>32-core Intel Xeon Gold CPUs at 2.9 Ghz</p>
+<p>24 GB RAM each</p>
+<p>Total of 512 GB of RAM</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="fiscal-year-25-cpu-pricing">
+<h2>Fiscal Year 25 CPU Pricing<a class="headerlink" href="#fiscal-year-25-cpu-pricing" title="Link to this heading">¶</a></h2>
+<p>1,000 CPU Core Hours</p>
+<ul>
+<li><p>Billed per single CPU core utilized for one hour at $0.005 per CPU core hour.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Unit       $5.00</p></li>
+</ul>
+<p>give example</p>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="fiscal-year-25-gpu-pricing">
+<h2>Fiscal Year 25 GPU Pricing<a class="headerlink" href="#fiscal-year-25-gpu-pricing" title="Link to this heading">¶</a></h2>
+<ul>
+<li><p>Tier 1 GPU Hour</p>
+<blockquote>
+<div><p>One complete A100 GPU utilized for one hour</p>
+<ul class="simple">
+<li><p>Hour       $0.07</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Tier 2 GPU Hour</p>
+<blockquote>
+<div><p>One complete L40/A30/T4 GPU utilized for one hour</p>
+<ul class="simple">
+<li><p>Hour       $0.05</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Tier 3 GPU Hour</p>
+<blockquote>
+<div><p>One complete RTX2080 GPU utilized for one hour</p>
+<ul class="simple">
+<li><p>Hour       $0.03</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="fiscal-year-25-other-pricing">
+<h2>Fiscal Year 25 Other Pricing<a class="headerlink" href="#fiscal-year-25-other-pricing" title="Link to this heading">¶</a></h2>
+<ul>
+<li><p>Virtual Machine</p>
+<blockquote>
+<div><p>Dedicated node independent from other services. Billed based on hours in an active state within period. Storage billed separately (minimum 80 GB allocation)</p>
+<ul class="simple">
+<li><p>vCPU per Month     $2.50</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="contact">
+<h2>Contact<a class="headerlink" href="#contact" title="Link to this heading">¶</a></h2>
+<p>For more information or questions, please contact the ARCSIM team</p>
+<p><a class="reference external" href="mailto:um&#46;arcsim&#37;&#52;&#48;maine&#46;edu">um<span>&#46;</span>arcsim<span>&#64;</span>maine<span>&#46;</span>edu</a>
+or fill out our service request form.</p>
+<p>HPC and Cloud technical documentation is available in the ARCSIM Guides wiki.</p>
+<p>For general information, please visit <a class="reference external" href="https://umaine.edu/arcsim/">https://umaine.edu/arcsim/</a></p>
+</section>
+</section>
+<section id="hpc-how-to-quick-start-guide">
+<h1>HPC How-To Quick Start Guide<a class="headerlink" href="#hpc-how-to-quick-start-guide" title="Link to this heading">¶</a></h1>
+<section id="open-ondemand">
+<h2>Open OnDemand<a class="headerlink" href="#open-ondemand" title="Link to this heading">¶</a></h2>
+<p>ARCSIM’s Open OnDemand (OOD) server is a web portal that provides access to UMS HPC resources via web browser.
+Getting started with HPC using OOD can be easier than using SSH and VNC sessions.
+Managing files, submitting compute jobs and running interactive apps (MATLAB, RStudio, etc) can all be done in a point-and-click interface within one or more browser tabs.</p>
+<p>OOD Webinar:
+<a class="reference external" href="https://www.youtube.com/watch?v=OXwfER4NVrQ">https://www.youtube.com/watch?v=OXwfER4NVrQ</a></p>
+</section>
+<section id="vpn">
+<h2>VPN<a class="headerlink" href="#vpn" title="Link to this heading">¶</a></h2>
+<p>ARCSIM HPC services are firewalled to outside traffic, you must be within the UMS networking system or connected to the UMS VPN service to access the HPC systems.</p>
+<p>Link to download and connect to VPN:
+<a class="reference external" href="https://vpn.maine.edu/">https://vpn.maine.edu/</a></p>
+<a class="reference internal image-reference" href="_images/howto1.png"><img alt="_images/howto1.png" class="align-center" src="_images/howto1.png" style="width: 600px;" />
+</a>
+<p>Select and download “Remote Access VPN”</p>
+</section>
+<section id="log-in">
+<h2>Log in<a class="headerlink" href="#log-in" title="Link to this heading">¶</a></h2>
+<p>Once connected to UMS VPN, follow the link below to find the OnDemand portal home directory
+<a class="reference external" href="https://login1.acg.maine.edu">https://login1.acg.maine.edu</a></p>
+<p>To create an account, please contact ARCSIM, or fill out this form:
+<a class="reference external" href="https://umaine.edu/arcsim/arcsim-services-request/">https://umaine.edu/arcsim/arcsim-services-request/</a></p>
+<p>You must log in with UMS credentials. Your username name will be the “first.last” of your maine.edu email.</p>
+</section>
+<section id="home-options">
+<h2>Home options<a class="headerlink" href="#home-options" title="Link to this heading">¶</a></h2>
+<a class="reference internal image-reference" href="_images/howto2.png"><img alt="_images/howto2.png" class="align-center" src="_images/howto2.png" style="width: 600px;" />
+</a>
+<p>To work within the browser, you may now select and use any of the applications.</p>
+</section>
+<section id="open-ondemand-file-upload">
+<h2>Open OnDemand File Upload<a class="headerlink" href="#open-ondemand-file-upload" title="Link to this heading">¶</a></h2>
+<a class="reference internal image-reference" href="_images/howto3.png"><img alt="_images/howto3.png" class="align-center" src="_images/howto3.png" style="width: 400px;" />
+</a>
+<p>Select “Home Directory” to upload files within the browser</p>
+<a class="reference internal image-reference" href="_images/howto4.png"><img alt="_images/howto4.png" class="align-center" src="_images/howto4.png" style="width: 600px;" />
+</a>
+<p>In the home file directory, select one of the button options to begin uploading data</p>
+</section>
+<section id="ssh-file-upload">
+<h2>SSH File UPload<a class="headerlink" href="#ssh-file-upload" title="Link to this heading">¶</a></h2>
+<p>To connect to the Penobscot cluster through SSH, you must generate a keypair from your workstation and add it to your authorized_keys file through OOD.</p>
+<p>Follow the instructions on the ARCSIM wiki page here:
+<a class="reference external" href="https://github.com/umaine-research/ARCSIM-Guides/wiki/SSH-Access-Using-a-Keypair">https://github.com/umaine-research/ARCSIM-Guides/wiki/SSH-Access-Using-a-Keypair</a></p>
+</section>
+<section id="google-drive-file-upload">
+<h2>Google Drive File Upload<a class="headerlink" href="#google-drive-file-upload" title="Link to this heading">¶</a></h2>
+<p>To upload your data files on to Penobscot through google drive using Rclone, follow ARCSIM directions here:
+<a class="reference external" href="https://github.com/umaine-research/ARCSIM-Guides/wiki/Google-Drive-on-Penobscot">https://github.com/umaine-research/ARCSIM-Guides/wiki/Google-Drive-on-Penobscot</a></p>
+</section>
+<section id="gui-applications">
+<h2>GUI Applications<a class="headerlink" href="#gui-applications" title="Link to this heading">¶</a></h2>
+<a class="reference internal image-reference" href="_images/howto5.png"><img alt="_images/howto5.png" class="align-center" src="_images/howto5.png" style="width: 600px;" />
+</a>
+<p>There are 3 GUI applications available to use on Penobscot</p>
+<p>To use, just select from the pinned apps or in the “Apps” drop down list.</p>
+</section>
+<section id="software">
+<h2>Software<a class="headerlink" href="#software" title="Link to this heading">¶</a></h2>
+<p>There are preloaded software modules on the cluster. Some new packages may be installed by the user in their environment.</p>
+<p>If admin rights are needed to install a new software module, please reach out to ARCSIM for approval.
+<a class="reference external" href="mailto:um&#46;arcsim&#37;&#52;&#48;maine&#46;edu">um<span>&#46;</span>arcsim<span>&#64;</span>maine<span>&#46;</span>edu</a></p>
+</section>
+<section id="id1">
+<h2>Contact<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h2>
+<p>For more information or questions, please contact the ARCSIM team.
+<a class="reference external" href="mailto:um&#46;arcsim&#37;&#52;&#48;maine&#46;edu">um<span>&#46;</span>arcsim<span>&#64;</span>maine<span>&#46;</span>edu</a>
+or fill out our service request form.</p>
+<p>HPC and Cloud technical documentation is available in the ARCSIM Guides wiki.</p>
+<p>For general information, please visit <a class="reference external" href="https://umaine.edu/arcsim/">https://umaine.edu/arcsim/</a></p>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="vms.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Virtual Machines</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="index.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Home</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2025, Katie Arsenault
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">HPC Introduction</a><ul>
+<li><a class="reference internal" href="#arcsim">ARCSIM</a></li>
+<li><a class="reference internal" href="#cpu-vs-gpu-options">CPU vs. GPU options</a></li>
+<li><a class="reference internal" href="#arcsim-hpc-clusters">ARCSIM HPC Clusters</a></li>
+<li><a class="reference internal" href="#pricing">Pricing</a></li>
+<li><a class="reference internal" href="#cpu-compute-nodes">CPU Compute Nodes</a></li>
+<li><a class="reference internal" href="#gpu-compute-nodes-penobscot-only">GPU Compute Nodes       Penobscot Only</a></li>
+<li><a class="reference internal" href="#fiscal-year-25-cpu-pricing">Fiscal Year 25 CPU Pricing</a></li>
+<li><a class="reference internal" href="#fiscal-year-25-gpu-pricing">Fiscal Year 25 GPU Pricing</a></li>
+<li><a class="reference internal" href="#fiscal-year-25-other-pricing">Fiscal Year 25 Other Pricing</a></li>
+<li><a class="reference internal" href="#contact">Contact</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hpc-how-to-quick-start-guide">HPC How-To Quick Start Guide</a><ul>
+<li><a class="reference internal" href="#open-ondemand">Open OnDemand</a></li>
+<li><a class="reference internal" href="#vpn">VPN</a></li>
+<li><a class="reference internal" href="#log-in">Log in</a></li>
+<li><a class="reference internal" href="#home-options">Home options</a></li>
+<li><a class="reference internal" href="#open-ondemand-file-upload">Open OnDemand File Upload</a></li>
+<li><a class="reference internal" href="#ssh-file-upload">SSH File UPload</a></li>
+<li><a class="reference internal" href="#google-drive-file-upload">Google Drive File Upload</a></li>
+<li><a class="reference internal" href="#gui-applications">GUI Applications</a></li>
+<li><a class="reference internal" href="#software">Software</a></li>
+<li><a class="reference internal" href="#id1">Contact</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="_static/documentation_options.js?v=d45e8c67"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/furo.js?v=46bd48cc"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    </body>
+</html>
